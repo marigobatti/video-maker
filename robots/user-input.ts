@@ -1,8 +1,6 @@
 const readline = require('readline-sync');
 
-function start() {
-    const content = {};
-
+export default function robot(content) {
     content.searchTerm = askAndReturnSearchTerm();
     content.prefix = askAndReturnPrefix();
     
@@ -18,8 +16,4 @@ function start() {
         console.log(selectedPrefixText);
         return selectedPrefixText
     }
-
-    console.log(content);
 }
-
-start()
