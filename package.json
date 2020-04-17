@@ -1,26 +1,30 @@
 {
-  "name": "video-maker",
-  "version": "1.0.0",
-  "description": "Projeto para criação automática de vídeos",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/marigobatti/video-maker.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/marigobatti/video-maker/issues"
-  },
-  "homepage": "https://github.com/marigobatti/video-maker#readme",
-  "dependencies": {
-    "readline-sync": "^1.4.10"
-  },
-  "devDependencies": {
-    "@types/node": "^13.9.5",
-    "typescript": "^3.8.3"
-  }
+    "name": "video-maker",
+    "version": "1.0.0",
+    "description": "Projeto para criação automática de vídeos",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/marigobatti/video-maker.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/marigobatti/video-maker/issues"
+    },
+    "homepage": "https://github.com/marigobatti/video-maker#readme",
+    "dependencies": {
+        "algorithmia": "^0.3.10",
+        "readline-sync": "^1.4.10",
+        "sbd": "^1.0.18"
+    },
+    "devDependencies": {
+        "@types/node": "^13.9.5",
+        "@types/readline-sync": "^1.4.3",
+        "@types/sbd": "^1.0.1",
+        "typescript": "^3.8.3"
+    }
 }

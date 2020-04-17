@@ -1,11 +1,22 @@
 {
     "compilerOptions": {
-        "outDir": "./dist",
+        "baseUrl": ".",
+        "paths": { "*": ["types/*"] },
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "lib": ["dom", "esnext", "es2017.object"],
         "module": "commonjs",
-        "target": "es5",
-        "sourceMap": true
+        "target": "es6",
+        "outDir": "./dist",
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
     },
-        "include": [
-        "./**/*"
-    ]
+    "include": ["./src/**/*.ts"],
+    "exclude": ["node_modules"]
 }
