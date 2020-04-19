@@ -3,9 +3,10 @@ import { IamAuthenticator } from 'ibm-watson/auth';
 import NaturalLanguageUnderstandingV1 from 'ibm-watson/natural-language-understanding/v1';
 import sentenceBoundaryDetection from 'sbd';
 
-import { Content } from '../';
 import algorithmiaData from '../../credentials/algorithmia.json';
 import watsonData from '../../credentials/watson-nlu.json';
+import { Content } from './input';
+import { load, save } from './state';
 
 
 const nlu = new NaturalLanguageUnderstandingV1({
@@ -14,12 +15,14 @@ const nlu = new NaturalLanguageUnderstandingV1({
     url: watsonData.url,
 });
 
-export default async function robot(content: Content) {
+export default async function robot() {
+    const content = load() as Content;
     await fetchContentFromWikipedia(content);
     sanitizeContent(content);
     breakContentIntoSentences(content);
     limitMaximumSentences(content);
     await fetchKeywordsOfAllSentences(content);
+    save(content);
 
     async function fetchContentFromWikipedia(content: Content) {
         const algorithmiaAuthenticated = algorithmia(algorithmiaData.apiKey);
