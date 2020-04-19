@@ -1,5 +1,6 @@
-import userInput from './robots/user-input';
 import text from './robots/text';
+import userInput from './robots/user-input';
+
 
 export interface Content {
     searchTerm: string;
@@ -8,13 +9,16 @@ export interface Content {
     sourceContentSanitized: string;
     sentences: {
         text: string;
-        keywords: [];
+        keywords: string[];
         images: [];
     }[];
+    maximumSentences: number;
 }
 
 async function start() {
-    const content = {} as Content;
+    const content = {
+        maximumSentences: 7,
+    } as Content;
 
     userInput(content);
     await text(content);
