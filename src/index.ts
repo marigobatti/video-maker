@@ -1,29 +1,14 @@
+import input from './robots/input';
+import { load } from './robots/state';
 import text from './robots/text';
-import userInput from './robots/user-input';
 
-
-export interface Content {
-    searchTerm: string;
-    prefix: string;
-    sourceContentOriginal: string;
-    sourceContentSanitized: string;
-    sentences: {
-        text: string;
-        keywords: string[];
-        images: [];
-    }[];
-    maximumSentences: number;
-}
 
 async function start() {
-    const content = {
-        maximumSentences: 7,
-    } as Content;
+    input();
+    await text();
 
-    userInput(content);
-    await text(content);
-
-    console.log(content);
+    const content = load();
+    console.dir(content, { depth: null });
 }
 
 start();
