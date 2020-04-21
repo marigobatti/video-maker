@@ -11,7 +11,8 @@ export interface Content {
     sentences: {
         text: string;
         keywords: string[];
-        images: [];
+        googleSearchQuery: string;
+        images: string[];
     }[];
     maximumSentences: number;
 }
