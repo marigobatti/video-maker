@@ -68,6 +68,7 @@ export default async function robot() {
             content.sentences.push({
                 text: sentence,
                 keywords: [],
+                googleSearchQuery: '',
                 images: [],
             });
         });
