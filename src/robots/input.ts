@@ -15,6 +15,7 @@ export interface Content {
         images: string[];
     }[];
     maximumSentences: number;
+    downloadedImages: string[];
 }
 
 export default function robot() {
