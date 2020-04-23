@@ -8,6 +8,7 @@
         "awesome-typescript-loader": "^5.2.1",
         "googleapis": "^49.0.0",
         "ibm-watson": "^5.4.0",
+        "image-downloader": "^3.5.0",
         "sbd": "^1.0.18",
         "source-map-loader": "^0.2.4"
     },
