@@ -6,13 +6,16 @@
     "dependencies": {
         "algorithmia": "^0.3.10",
         "awesome-typescript-loader": "^5.2.1",
+        "gm": "^1.23.1",
         "googleapis": "^49.0.0",
         "ibm-watson": "^5.4.0",
         "image-downloader": "^3.5.0",
+        "readline-sync": "^1.4.10",
         "sbd": "^1.0.18",
         "source-map-loader": "^0.2.4"
     },
     "devDependencies": {
+        "@types/gm": "^1.18.7",
         "@types/readline-sync": "^1.4.3",
         "@types/sbd": "^1.0.1"
     },
