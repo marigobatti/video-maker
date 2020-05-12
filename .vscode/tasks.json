@@ -1,0 +1,32 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "yarn engine",
+			"command": "\".\\scripts\\setenv.bat\" && yarn engine",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"isBackground": true
+		},
+		{
+			"type": "shell",
+			"label": "run test",
+			"command": "\".\\scripts\\setenv.bat\" && yarn workspace engine run test && exit",
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "new",
+				"showReuseMessage": false
+			}
+		}
+	]
+}

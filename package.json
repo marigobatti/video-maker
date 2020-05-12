@@ -1,32 +1,21 @@
 {
-    "name": "video-maker",
-    "version": "1.0.0",
+    "private": true,
+    "name": "videomaker-monorepo",
     "description": "Projeto open source para criar vídeos automatizados",
-    "main": "webpack.config.js",
-    "dependencies": {
-        "algorithmia": "^0.3.10",
-        "awesome-typescript-loader": "^5.2.1",
-        "gm": "^1.23.1",
-        "googleapis": "^49.0.0",
-        "ibm-watson": "^5.4.0",
-        "image-downloader": "^3.5.0",
-        "readline-sync": "^1.4.10",
-        "sbd": "^1.0.18",
-        "source-map-loader": "^0.2.4"
-    },
-    "devDependencies": {
-        "@types/gm": "^1.18.7",
-        "@types/readline-sync": "^1.4.3",
-        "@types/sbd": "^1.0.1"
-    },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "client": "yarn workspace client start",
+        "server": "yarn workspace server start:dev",
+        "engine": "yarn workspace engine start:dev",
+        "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\""
+    },
+    "workspaces": ["packages/*"],
+    "dependencies": {
+        "concurrently": "4.1.0"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/marigobatti/video-maker.git"
     },
-    "author": "",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/marigobatti/video-maker/issues"
