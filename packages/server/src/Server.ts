@@ -1,19 +1,18 @@
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
-import path from 'path';
 import helmet from 'helmet';
 
 import express, { Request, Response, NextFunction } from 'express';
-import { BAD_REQUEST } from 'http-status-codes';
+import { BAD_REQUEST, OK } from 'http-status-codes';
 import 'express-async-errors';
 
 import BaseRouter from './routes';
 import logger from '@shared/Logger';
+import { google } from 'googleapis';
 
 
 // Init express
 const app = express();
-
 
 
 /************************************************************************************
@@ -34,8 +33,12 @@ if (process.env.NODE_ENV === 'production') {
     app.use(helmet());
 }
 
-// Add APIs
-app.use('/api', BaseRouter);
+// Add Routes
+app.use('/', BaseRouter);
+
+app.get('/', (req: Request, res: Response) => {
+    return res.status(OK).json({hello: 'Welcome to the server'});
+});
 
 // Print API errors
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
@@ -46,18 +49,13 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 
-
 /************************************************************************************
- *                              Serve front-end content
+ *                              Google OAuth config
  ***********************************************************************************/
 
-const viewsDir = path.join(__dirname, 'views');
-app.set('views', viewsDir);
-const staticDir = path.join(__dirname, 'public');
-app.use(express.static(staticDir));
-app.get('*', (req: Request, res: Response) => {
-    res.sendFile('index.html', {root: viewsDir});
-});
+export const OAuth2 = google.auth.OAuth2;
+app.set('view engine', 'ejs');
+app.set('views', __dirname);
 
 // Export express instance
 export default app;
