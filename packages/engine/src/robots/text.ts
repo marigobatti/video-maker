@@ -1,18 +1,19 @@
 import algorithmia from 'algorithmia';
+import { config } from 'dotenv';
 import { IamAuthenticator } from 'ibm-watson/auth';
 import NaturalLanguageUnderstandingV1 from 'ibm-watson/natural-language-understanding/v1';
 import sentenceBoundaryDetection from 'sbd';
 
-import algorithmiaData from '../../credentials/algorithmia.json';
-import watsonData from '../../credentials/watson-nlu.json';
 import { Content } from './input';
 import { load, save } from './state';
 
 
+config();
+
 const nlu = new NaturalLanguageUnderstandingV1({
-    authenticator: new IamAuthenticator({ apikey: watsonData.apikey }),
+    authenticator: new IamAuthenticator({ apikey: process.env.WATSON_NLU_API_KEY ?? '' }),
     version: '2018-04-05',
-    url: watsonData.url,
+    url: process.env.WATSON_NLU_URL,
 });
 
 export default async function robot() {
@@ -25,7 +26,7 @@ export default async function robot() {
     save(content);
 
     async function fetchContentFromWikipedia(content: Content) {
-        const algorithmiaAuthenticated = algorithmia(algorithmiaData.apiKey);
+        const algorithmiaAuthenticated = algorithmia(process.env.API_KEY);
         const wikipediaAlgorithm = algorithmiaAuthenticated.algo('web/WikipediaParser/0.1.2');
         const wikipediaResponse = await wikipediaAlgorithm.pipe(content.searchTerm);
         const wikipediaContent = wikipediaResponse.get();
