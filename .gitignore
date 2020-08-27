@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+/packages/engine/credentials/algorithmia.json
+/packages/engine/credentials/google-search.json
+/packages/engine/credentials/watson-nlu.json
